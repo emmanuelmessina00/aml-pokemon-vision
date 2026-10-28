@@ -23,3 +23,6 @@ class PokemonVisionDataset(Dataset):
             img = self.transform(img)
 
         return img, label
+
+if __name__=="__main__":
+    pass
