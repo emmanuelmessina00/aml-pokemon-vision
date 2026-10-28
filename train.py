@@ -1,12 +1,4 @@
 import torch
-import torch.nn as nn
-from torchvision import models
-import wandb
-from dataset.pokemon_dataset import PokemonVisionDataset
-from torch.utils.data import DataLoader, random_split
-from train import train_loop
-from eval import eval_loop
-from utils.stats import get_model_stats
 
 def train_loop(dataloader,model,optimizer,criterion,device):
   model.train()
