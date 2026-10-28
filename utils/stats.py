@@ -1,7 +1,7 @@
-from turtledemo import __main__
-
-from eval import eval_loop
+import torch
+import wandb
 from train import train_loop
+from eval import eval_loop
 
 def get_model_stats(train_loader,test_loader,eval_loader,model,optimizer,criterion,device,n_epochs,model_name):
 
