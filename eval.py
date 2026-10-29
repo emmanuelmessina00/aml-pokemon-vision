@@ -19,3 +19,20 @@ def eval_loop(dataloader,model,criterion,device):
   avg_loss=val_loss/total
   acc=total_corrects/total
   return avg_loss,acc
+
+def evaluate_detection(model,dataloader,device,score_threshold=0.5):
+  model.train()
+  val_loss=0
+
+  for images,targets in dataloader:
+    images = list(image.to(device) for image in images)
+    targets = [{k: v.to(device) for k, v in t.items()} for t in targets]
+
+    loss_dict = model(images, targets)
+    losses = sum(loss for loss in loss_dict.values())
+    val_loss += losses.item()
+
+  return val_loss / len(dataloader)
+
+if __name__ == '__main__':
+  pass

@@ -79,11 +79,8 @@ class PokemonVisionDataset(Dataset):
 
         # Restituiamo una struttura target adatta anche ai task standard di Torchvision
         target = {
-            "label": label_tensor,
-            "bbox": bbox,
-            "mask": mask_tensor
+            "boxes": bbox.unsqueeze(0),
+            "labels": label_tensor.unsqueeze(0),
         }
-
-        # Per mantenere la retrocompatibilità col train_loop attuale (che si aspetta x, y)
-        return img_tensor, label_tensor
+        return img_tensor, target
 

@@ -20,6 +20,8 @@ def get_model_stats(train_loader,test_loader,eval_loader,model,optimizer,criteri
   print("-" * 50)
   print(f"VALUTAZIONE FINALE TEST SET -> Loss: {test_loss:.4f} - Accuracy: {test_acc*100:.2f}%\n")
 
+def collate_fn(batch):
+    return tuple(zip(*batch))
 
 if __name__=="__main__":
     pass
